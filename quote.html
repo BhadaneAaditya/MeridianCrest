@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Request a B2B Quote | MeridianCrest International</title>
+<meta name="description" content="Request a structured B2B quote: product, quantity, destination, specifications, packaging and contact details. Upload your RFQ document." />
+<link rel="canonical" href="quote.html" />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap topbar-in"><span>B2B Export • Bulk Supply • Custom Specifications</span><span data-contact="email"></span></div></div>
+<header class="site-header"><div class="wrap header-in">
+<a class="brand" href="index.html" aria-label="MeridianCrest International — home"><img src="logo.png" alt="MeridianCrest International logo" /></a>
+<nav class="mainnav" id="mainnav" aria-label="Main navigation">
+<a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="sourcing.html">Sourcing &amp; Quality</a><a href="process.html">Export Process</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+</nav>
+<div class="header-actions"><a class="btn btn-ghost btn-sm" href="catalogue.html">View Catalogue</a><a class="btn btn-primary btn-sm" href="quote.html">Get a Quote</a><button class="hamburger" id="hamburger" aria-label="Open menu">☰</button></div>
+</div></header>
+
+<main id="main">
+<section class="section"><div class="wrap" style="max-width:780px">
+<span class="kicker">Get a quote</span>
+<h1>Request a B2B Quote</h1>
+<p class="lead">Four short steps. Only the product step is mandatory up front — everything else follows your requirement.</p>
+<p class="small" id="prefill"></p>
+<div class="progress" aria-live="polite"><span id="qStep">Step 1 / 4</span><span class="bar"><i id="qBar"></i></span></div>
+
+<form id="quoteForm" class="card" novalidate>
+<!-- STEP 1 -->
+<fieldset id="s1" style="border:0">
+<div class="field"><label for="f-product">Product *</label><select id="f-product"></select><span class="err" id="e-product"></span></div>
+<div class="field"><label for="f-form">Product form</label><input id="f-form" placeholder="e.g. 100 mesh powder, 8–15 mm flakes" /><span class="hint">Only if you already know it — otherwise leave blank.</span></div>
+</fieldset>
+<!-- STEP 2 -->
+<fieldset id="s2" style="border:0" hidden>
+<div class="row2">
+<div class="field"><label for="f-qty">Required quantity *</label><input id="f-qty" inputmode="decimal" placeholder="e.g. 5" /><span class="err" id="e-qty"></span></div>
+<div class="field"><label for="f-unit">Unit</label><select id="f-unit"><option>MT</option><option>kg</option><option>Container(s)</option></select></div>
+</div>
+<div class="row2">
+<div class="field"><label for="f-country">Country *</label><input id="f-country" placeholder="e.g. United Arab Emirates" /><span class="err" id="e-country"></span></div>
+<div class="field"><label for="f-city">City</label><input id="f-city" placeholder="e.g. Dubai" /></div>
+</div>
+<div class="row2">
+<div class="field"><label for="f-port">Destination port</label><input id="f-port" placeholder="e.g. Jebel Ali" /></div>
+<div class="field"><label for="f-freq">Expected purchase frequency</label><select id="f-freq"><option>One-time</option><option>Monthly</option><option>Quarterly</option><option>Annual contract</option><option>Undecided</option></select></div>
+</div>
+</fieldset>
+<!-- STEP 3 -->
+<fieldset id="s3" style="border:0" hidden>
+<div class="row2">
+<div class="field"><label for="f-pack">Packaging requirement</label><input id="f-pack" placeholder="e.g. 25 kg food-grade bags, private label" /></div>
+<div class="field"><label for="f-price">Target price (optional)</label><input id="f-price" placeholder="e.g. USD 1,400 / MT CIF" /><span class="hint">Quoted pricing is confirmed per requirement — this helps us respond accurately.</span></div>
+</div>
+<div class="field"><label for="f-spec">Specification, packaging, documentation or sourcing requirements</label><textarea id="f-spec" rows="5" placeholder="Mesh size, moisture target, labelling language, documents needed, timeline…"></textarea></div>
+<div class="field"><label for="f-file">Upload specification / RFQ document</label><input id="f-file" type="file" accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png" /><span class="hint">PDF, DOCX, XLSX, JPG, PNG — max 10 MB (configurable).</span><span class="err" id="e-file"></span></div>
+</fieldset>
+<!-- STEP 4 -->
+<fieldset id="s4" style="border:0" hidden>
+<div class="row2">
+<div class="field"><label for="f-name">Full name *</label><input id="f-name" autocomplete="name" /><span class="err" id="e-name"></span></div>
+<div class="field"><label for="f-company">Business / company name *</label><input id="f-company" autocomplete="organization" /><span class="err" id="e-company"></span></div>
+</div>
+<div class="row2">
+<div class="field"><label for="f-email">Business email *</label><input id="f-email" type="email" autocomplete="email" /><span class="err" id="e-email"></span></div>
+<div class="field"><label for="f-phone">Phone / WhatsApp</label><input id="f-phone" type="tel" autocomplete="tel" /></div>
+</div>
+<div class="field"><label style="display:flex;gap:8px;align-items:flex-start;font-weight:500"><input id="f-consent" type="checkbox" style="width:auto;margin-top:4px" /> I agree to be contacted regarding my inquiry.</label><span class="err" id="e-consent"></span></div>
+<div class="notice" id="review"></div>
+<p class="form-err" id="submitErr" hidden></p>
+</fieldset>
+<div style="display:flex;gap:10px;margin-top:8px"><button type="button" class="btn btn-light" id="qBack" hidden>← Back</button><button type="button" class="btn btn-primary" id="qNext" style="flex:1">Continue →</button></div>
+<p class="small" style="margin-top:10px">Prefer direct contact? <span data-contact="email"></span> · <span data-contact="whatsapp"></span></p>
+</form>
+
+<div class="card" id="done" hidden>
+<h2>Thank you. Your inquiry has been received.</h2>
+<p>Our team will review your requirements and contact you. Your reference: <b id="doneRef"></b></p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><a class="btn btn-forest" href="dashboard.html">Open Buyer Dashboard →</a><a class="btn btn-light" href="products.html">Browse more products</a></div>
+</div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="wrap f-grid">
+<div><img class="foot-logo" src="logo.png" alt="MeridianCrest International logo" /><p class="small">MeridianCrest International<br />India-Origin Ingredients. Global Supply.</p></div>
+<div><h5>Company</h5><a href="products.html">Products</a><a href="about.html">About</a><a href="sourcing.html">Sourcing</a><a href="process.html">Export Process</a><a href="contact.html">Contact</a></div>
+<div><h5>Products</h5><a href="products.html?cat=dehydrated-vegetables">Dehydrated Vegetables</a><a href="products.html?cat=natural-powders">Natural Powders</a><a href="products.html?cat=spices">Spices</a></div>
+<div><h5>Buyer Resources</h5><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="dashboard.html">Buyer Dashboard</a></div>
+</div>
+<div class="wrap f-bottom"><span>© <span data-year>2026</span> MeridianCrest International. All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Policy</a> · <a href="terms.html" style="display:inline">Terms</a> · <a href="cookies.html" style="display:inline">Cookie Policy</a></span></div></footer>
+
+<div class="contact-fab" aria-label="Direct contact">
+<a class="wa" id="fabWa" href="contact.html" title="WhatsApp" aria-label="WhatsApp">✆</a>
+<a id="fabMail" href="contact.html" title="Email" aria-label="Email">✉</a>
+<a class="quote" href="quote.html" title="Request Quote" aria-label="Request Quote">➔</a>
+</div>
+<nav class="mobile-bar" aria-label="Quick actions"><a class="btn btn-light" href="contact.html">WhatsApp</a><a class="btn btn-primary" href="quote.html">Get Quote</a></nav>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/quote.js"></script>
+</body>
+</html>

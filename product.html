@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Product | MeridianCrest International</title>
+<meta name="description" content="B2B product page: form, origin, applications, packaging and documentation. Specifications available on request." />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap topbar-in"><span>B2B Export • Bulk Supply • Custom Specifications</span><span data-contact="email"></span></div></div>
+<header class="site-header"><div class="wrap header-in">
+<a class="brand" href="index.html" aria-label="MeridianCrest International — home"><img src="logo.png" alt="MeridianCrest International logo" /></a>
+<nav class="mainnav" id="mainnav" aria-label="Main navigation">
+<a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="sourcing.html">Sourcing &amp; Quality</a><a href="process.html">Export Process</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+</nav>
+<div class="header-actions"><a class="btn btn-ghost btn-sm" href="catalogue.html" data-track="catalogue_download">View Catalogue</a><a class="btn btn-primary btn-sm" href="quote.html" data-track="quote_started">Get a Quote</a><button class="hamburger" id="hamburger" aria-label="Open menu">☰</button></div>
+</div></header>
+
+<main id="main"><div class="wrap" style="padding-top:26px"><p class="small" id="crumbs"><a href="index.html">Home</a> › <a href="products.html">Products</a> › <span id="crumbName">Product</span></p></div>
+<section class="section" style="padding-top:18px"><div class="wrap" id="detail"></div></section>
+<section class="section alt" style="padding-top:46px"><div class="wrap">
+<h2>Related products</h2><div class="p-grid" id="related" style="margin-top:18px"></div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="wrap f-grid">
+<div><img class="foot-logo" src="logo.png" alt="MeridianCrest International logo" /><p class="small">MeridianCrest International<br />India-Origin Ingredients. Global Supply.</p></div>
+<div><h5>Company</h5><a href="products.html">Products</a><a href="about.html">About</a><a href="sourcing.html">Sourcing</a><a href="process.html">Export Process</a><a href="contact.html">Contact</a></div>
+<div><h5>Products</h5><a href="products.html?cat=dehydrated-vegetables">Dehydrated Vegetables</a><a href="products.html?cat=natural-powders">Natural Powders</a><a href="products.html?cat=spices">Spices</a></div>
+<div><h5>Buyer Resources</h5><a href="catalogue.html">Catalogue</a><a href="resources.html">Buyer Guides</a><a href="faq.html">FAQ</a><a href="dashboard.html">Buyer Dashboard</a></div>
+</div>
+<div class="wrap f-bottom"><span>© <span data-year>2026</span> MeridianCrest International. All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Policy</a> · <a href="terms.html" style="display:inline">Terms</a> · <a href="cookies.html" style="display:inline">Cookie Policy</a></span></div></footer>
+
+<div class="contact-fab" aria-label="Direct contact">
+<a class="wa" id="fabWa" href="contact.html" title="WhatsApp" aria-label="WhatsApp">✆</a>
+<a id="fabMail" href="contact.html" title="Email" aria-label="Email">✉</a>
+<a class="quote" href="quote.html" title="Request Quote" aria-label="Request Quote" data-track="quote_started">➔</a>
+</div>
+<nav class="mobile-bar" aria-label="Quick actions"><a class="btn btn-light" href="contact.html">WhatsApp</a><a class="btn btn-primary" href="quote.html" data-track="quote_started">Get Quote</a></nav>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function(){
+  const slug = new URLSearchParams(location.search).get("slug") || "";
+  const p = getProductBySlug(slug);
+  const box = document.getElementById("detail");
+  if (!p) {
+    document.title = "Product not found | MeridianCrest International";
+    box.innerHTML = '<div class="empty-state"><h1>Product not found.</h1><p>The product you are looking for is unavailable or the link is incorrect.</p><a class="btn btn-forest" href="products.html">Browse all products</a> <a class="btn btn-light" href="quote.html">Send your requirement</a></div>';
+    return;
+  }
+  document.title = p.seo.title + " — MeridianCrest International";
+  document.getElementById("crumbName").textContent = p.name;
+  const esc = window.MCI.escapeHTML;
+  const ld = { "@context":"https://schema.org", "@type":"Product", name:p.name, category:categoryName(p.category),
+    description:p.description, brand:{ "@type":"Brand", name:"MeridianCrest International" }, origin:"India" };
+  const s = document.createElement("script"); s.type="application/ld+json"; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+
+  box.innerHTML =
+  '<div class="grid2"><div><div class="p-gallery" style="border-radius:10px;overflow:hidden;border:1px solid var(--line)">' +
+    p.images.map(im => '<figure style="height:230px"><img src="'+im.src+'" alt="'+esc(im.alt)+'" loading="lazy"><figcaption>'+im.tag+'</figcaption></figure>').join("") +
+  '</div><div class="card" style="margin-top:16px"><h3>Product overview</h3><p>'+p.description+'</p>' +
+  '<p class="small"><b>Available forms:</b> '+p.forms.join(", ")+'</p>' +
+  '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn btn-light btn-sm" id="saveP">♡ Save product</button><button class="btn btn-light btn-sm" id="saveS">▣ Save specification</button></div></div></div>' +
+  '<div><span class="kicker">'+categoryName(p.category)+'</span><h1 style="font-size:2rem">'+p.name+'</h1>' +
+  '<p class="small">Origin: <b>'+p.origin+'</b> &nbsp;•&nbsp; Price: <b>'+(window.QUOTE_CONFIG?window.QUOTE_CONFIG.priceNote:"Price available on request")+'</b></p>' +
+  '<h3 style="margin-top:16px">Technical specifications</h3><div class="table-scroll"><table class="spec-table">' +
+  '<tr><th>Specification</th><th>Details</th></tr>' +
+  '<tr><td>Product</td><td>'+p.name+'</td></tr>' +
+  '<tr><td>Origin</td><td>'+p.origin+'</td></tr>' +
+  '<tr><td>Form</td><td>'+p.forms.join(", ")+'</td></tr>' +
+  '<tr><td>Mesh size</td><td class="aor">'+p.specifications.meshSize+'</td></tr>' +
+  '<tr><td>Moisture</td><td class="aor">'+p.specifications.moisture+'</td></tr>' +
+  '<tr><td>Packaging</td><td>Customizable — discuss requirements</td></tr>' +
+  '<tr><td>MOQ</td><td>'+p.moq+'</td></tr>' +
+  '<tr><td>Shelf life</td><td>'+p.specifications.shelfLife+'</td></tr>' +
+  '<tr><td>COA</td><td>Available subject to order/product</td></tr>' +
+  '<tr><td>HS code</td><td>Confirm before publishing</td></tr></table></div>' +
+  '<h3 style="margin-top:16px">Applications</h3><p class="small">'+p.applications.join(" • ")+'</p>' +
+  '<h3 style="margin-top:12px">Packaging</h3><p class="small">'+p.packaging.options.join(" • ")+'. Private labeling: '+p.packaging.privateLabel+'.</p>' +
+  '<h3 style="margin-top:12px">Documentation</h3><p class="small">Availability depends on product, destination and order requirements: '+p.documentation.join("; ")+'.</p>' +
+  '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><a class="btn btn-primary btn-lg" href="quote.html?product='+p.slug+'" data-track="quote_started">Request a Quote for This Product</a><a class="btn btn-ghost" href="products.html">Back to products</a></div>' +
+  '</div></div>';
+
+  document.getElementById("saveP").addEventListener("click", () => {
+    const k = "mci_saved_products", cur = JSON.parse(localStorage.getItem(k) || "[]");
+    if (!cur.includes(p.slug)) cur.push(p.slug);
+    localStorage.setItem(k, JSON.stringify(cur));
+    window.MCI.track("product_saved", { slug: p.slug });
+    alert("Saved. Find it anytime under Buyer Dashboard → Saved products.");
+  });
+  document.getElementById("saveS").addEventListener("click", () => {
+    location.href = "quote.html?product=" + p.slug + "&save=1";
+  });
+  const rel = PRODUCTS.filter(x => x.category === p.category && x.slug !== p.slug).slice(0,3);
+  document.getElementById("related").innerHTML = rel.map(r =>
+    '<article class="p-card"><div class="p-gallery">'+r.images.map(im=>'<figure><img src="'+im.src+'" alt="'+esc(im.alt)+'" loading="lazy"><figcaption>'+im.tag+'</figcaption></figure>').join("")+'</div>'+
+    '<div class="p-body"><span class="p-cat">'+categoryName(r.category)+'</span><h3>'+r.name+'</h3><div class="p-actions"><a class="btn btn-forest" href="quote.html?product='+r.slug+'">Request Quote</a><a class="btn btn-light" href="product.html?slug='+r.slug+'">View Product</a></div></div></article>'
+  ).join("");
+  window.MCI.track("product_view", { slug: p.slug });
+})();
+</script>
+</body>
+</html>

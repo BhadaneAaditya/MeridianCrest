@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resources — B2B Blog &amp; Buyer Guides | MeridianCrest International</title>
+<meta name="description" content="Educational B2B resources: sourcing dehydrated onions, mesh sizes, COAs, export documentation, packaging, storage, cumin, amla and moringa guides." />
+<link rel="canonical" href="resources.html" />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap topbar-in"><span>B2B Export • Bulk Supply • Custom Specifications</span><span data-contact="email"></span></div></div>
+<header class="site-header"><div class="wrap header-in">
+<a class="brand" href="index.html" aria-label="MeridianCrest International — home"><img src="logo.png" alt="MeridianCrest International logo" /></a>
+<nav class="mainnav" id="mainnav" aria-label="Main navigation">
+<a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="sourcing.html">Sourcing &amp; Quality</a><a href="process.html">Export Process</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+</nav>
+<div class="header-actions"><a class="btn btn-ghost btn-sm" href="catalogue.html">View Catalogue</a><a class="btn btn-primary btn-sm" href="quote.html" data-track="quote_started">Get a Quote</a><button class="hamburger" id="hamburger" aria-label="Open menu">☰</button></div>
+</div></header>
+
+<main id="main">
+<section class="section"><div class="wrap">
+<span class="kicker">Knowledge center</span>
+<h1>B2B Blog &amp; Ingredient Guides</h1>
+<p class="lead">Educational content for sourcing teams — not promotional copy. Full articles are published as the company approves them.</p>
+<div class="b-grid" id="articles" style="margin-top:26px"></div>
+</div></section>
+
+<section class="section alt"><div class="wrap grid2">
+<div>
+<span class="kicker">Buyer guides</span>
+<h2>Downloadable Guides</h2>
+<p>Enter your business email to request a guide. Files are added by the company; until then your request is recorded and the team follows up.</p>
+<form id="guideForm" class="card" style="margin-top:14px">
+<div class="field"><label for="g-guide">Guide</label><select id="g-guide"></select></div>
+<div class="field"><label for="g-email">Business email *</label><input id="g-email" type="email" placeholder="you@company.com" /><span class="err" id="e-g-email"></span></div>
+<button class="btn btn-forest btn-block" type="submit" data-track="guide_requested">Download Buyer Guide</button>
+<p class="form-ok" id="g-ok" hidden>Request recorded. The guide will be shared once published — or contact us for the content directly.</p>
+</form>
+</div>
+<div id="guideList" style="display:grid;gap:14px;align-content:start"></div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="wrap f-grid">
+<div><img class="foot-logo" src="logo.png" alt="MeridianCrest International logo" /><p class="small">MeridianCrest International<br />India-Origin Ingredients. Global Supply.</p></div>
+<div><h5>Company</h5><a href="products.html">Products</a><a href="about.html">About</a><a href="sourcing.html">Sourcing</a><a href="process.html">Export Process</a><a href="contact.html">Contact</a></div>
+<div><h5>Products</h5><a href="products.html?cat=dehydrated-vegetables">Dehydrated Vegetables</a><a href="products.html?cat=natural-powders">Natural Powders</a><a href="products.html?cat=spices">Spices</a></div>
+<div><h5>Buyer Resources</h5><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="dashboard.html">Buyer Dashboard</a></div>
+</div>
+<div class="wrap f-bottom"><span>© <span data-year>2026</span> MeridianCrest International. All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Policy</a> · <a href="terms.html" style="display:inline">Terms</a> · <a href="cookies.html" style="display:inline">Cookie Policy</a></span></div></footer>
+<div class="contact-fab" aria-label="Direct contact"><a class="wa" id="fabWa" href="contact.html" title="WhatsApp" aria-label="WhatsApp">✆</a><a id="fabMail" href="contact.html" title="Email" aria-label="Email">✉</a><a class="quote" href="quote.html" title="Request Quote" aria-label="Request Quote" data-track="quote_started">➔</a></div>
+<nav class="mobile-bar" aria-label="Quick actions"><a class="btn btn-light" href="contact.html">WhatsApp</a><a class="btn btn-primary" href="quote.html" data-track="quote_started">Get Quote</a></nav>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function(){
+  document.getElementById("articles").innerHTML = ARTICLES.map(a =>
+    '<article class="b-card"><div class="b-in"><span class="b-tag">'+a.tag+'</span><h3>'+a.title+'</h3><p>'+a.excerpt+'</p><span class="b-meta">'+a.read+' • Full text on approval</span></div></article>').join("");
+  document.getElementById("guideList").innerHTML = GUIDES.map(g =>
+    '<div class="card"><h3>'+g.title+'</h3><p class="small">'+g.desc+'</p></div>').join("");
+  const sel = document.getElementById("g-guide");
+  sel.innerHTML = GUIDES.map(g => '<option value="'+g.id+'">'+g.title+'</option>').join("");
+  document.getElementById("guideForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const em = document.getElementById("g-email"), err = document.getElementById("e-g-email");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())) { err.textContent = "Enter a valid business email."; return; }
+    err.textContent = "";
+    const r = JSON.parse(localStorage.getItem("mci_guide_requests") || "[]");
+    r.push({ date: new Date().toISOString(), guide: sel.value, email: em.value.trim() });
+    localStorage.setItem("mci_guide_requests", JSON.stringify(r));
+    window.MCI.track("guide_requested", { guide: sel.value });
+    document.getElementById("g-ok").hidden = false; e.target.reset();
+  });
+})();
+</script>
+</body>
+</html>

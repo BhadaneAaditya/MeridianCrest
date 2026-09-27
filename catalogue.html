@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Product Catalogue | MeridianCrest International</title>
+<meta name="description" content="Browse the MeridianCrest catalogue online or download it as PDF: product forms, applications, packaging, MOQ and documentation." />
+<link rel="canonical" href="catalogue.html" />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap topbar-in"><span>B2B Export • Bulk Supply • Custom Specifications</span><span data-contact="email"></span></div></div>
+<header class="site-header"><div class="wrap header-in">
+<a class="brand" href="index.html" aria-label="MeridianCrest International — home"><img src="logo.png" alt="MeridianCrest International logo" /></a>
+<nav class="mainnav" id="mainnav" aria-label="Main navigation">
+<a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="sourcing.html">Sourcing &amp; Quality</a><a href="process.html">Export Process</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+</nav>
+<div class="header-actions"><a class="btn btn-ghost btn-sm" href="catalogue.html">View Catalogue</a><a class="btn btn-primary btn-sm" href="quote.html" data-track="quote_started">Get a Quote</a><button class="hamburger" id="hamburger" aria-label="Open menu">☰</button></div>
+</div></header>
+
+<main id="main">
+<section class="section"><div class="wrap">
+<span class="kicker">Catalogue</span>
+<h1>Download Product Catalogue</h1>
+<p class="lead">Browse online below, or download the PDF for your QA and procurement teams.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0" class="no-print">
+<button class="btn btn-primary" id="dlBtn" data-track="catalogue_download">⬇ Download Full Catalogue (PDF)</button>
+<button class="btn btn-light" onclick="window.print()">🖨 Print / Save Spec Sheet</button>
+</div>
+<div class="table-scroll"><table class="spec-table" id="catTable">
+<thead><tr><th>Product</th><th>Category</th><th>Forms</th><th>Key specs</th><th>Applications</th><th>Packaging</th><th>MOQ</th><th>Documentation</th></tr></thead>
+<tbody id="catBody"></tbody>
+</table></div>
+<div class="empty-state" id="catEmpty" hidden><h3>Catalogue is currently being updated.</h3><p>Contact us for the latest product specifications.</p><a class="btn btn-primary" href="contact.html">Contact us</a></div>
+<p class="small" style="margin-top:14px">Contact: <span data-contact="email"></span> · <span data-contact="phone"></span>. Price available on request. Specifications verified per order — unverified values are stated as “Available on request”.</p>
+</div></section>
+</main>
+
+<footer class="footer"><div class="wrap f-grid">
+<div><img class="foot-logo" src="logo.png" alt="MeridianCrest International logo" /><p class="small">MeridianCrest International<br />India-Origin Ingredients. Global Supply.</p></div>
+<div><h5>Company</h5><a href="products.html">Products</a><a href="about.html">About</a><a href="sourcing.html">Sourcing</a><a href="process.html">Export Process</a><a href="contact.html">Contact</a></div>
+<div><h5>Products</h5><a href="products.html?cat=dehydrated-vegetables">Dehydrated Vegetables</a><a href="products.html?cat=natural-powders">Natural Powders</a><a href="products.html?cat=spices">Spices</a></div>
+<div><h5>Buyer Resources</h5><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="dashboard.html">Buyer Dashboard</a></div>
+</div>
+<div class="wrap f-bottom"><span>© <span data-year>2026</span> MeridianCrest International. All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Policy</a> · <a href="terms.html" style="display:inline">Terms</a> · <a href="cookies.html" style="display:inline">Cookie Policy</a></span></div></footer>
+<div class="contact-fab" aria-label="Direct contact"><a class="wa" id="fabWa" href="contact.html" title="WhatsApp" aria-label="WhatsApp">✆</a><a id="fabMail" href="contact.html" title="Email" aria-label="Email">✉</a><a class="quote" href="quote.html" title="Request Quote" aria-label="Request Quote" data-track="quote_started">➔</a></div>
+<nav class="mobile-bar" aria-label="Quick actions"><a class="btn btn-light" href="contact.html">WhatsApp</a><a class="btn btn-primary" href="quote.html" data-track="quote_started">Get Quote</a></nav>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function(){
+  try {
+    const rows = PRODUCTS.filter(p => p.status === "active").map(p =>
+      '<tr><td><b>'+p.name+'</b></td><td>'+categoryName(p.category)+'</td><td>'+p.forms.join(", ")+'</td>' +
+      '<td class="aor">Available on request</td><td>'+p.applications.slice(0,3).join("; ")+'</td>' +
+      '<td>Customizable</td><td>'+p.moq+'</td><td class="small">Per order requirements</td></tr>').join("");
+    if (!rows) throw new Error("empty");
+    document.getElementById("catBody").innerHTML = rows;
+  } catch (err) {
+    document.getElementById("catTable").hidden = true;
+    document.getElementById("catEmpty").hidden = false;
+    document.getElementById("dlBtn").setAttribute("disabled", "");
+  }
+  document.getElementById("dlBtn").addEventListener("click", () => {
+    const rows = PRODUCTS.filter(p => p.status === "active").map(p =>
+      '<tr><td><b>'+p.name+'</b><br><small>'+categoryName(p.category)+'</small></td><td>'+p.forms.join(", ")+'</td><td>Available on request</td><td>'+p.applications.slice(0,2).join("; ")+'</td><td>Customizable</td><td>'+p.moq+'</td></tr>').join("");
+    const html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>MeridianCrest Catalogue</title><style>body{font-family:Arial,sans-serif;padding:32px}table{width:100%;border-collapse:collapse;font-size:11px}th{background:#17452b;color:#fff;padding:7px;text-align:left}td{border:1px solid #ccc;padding:7px}</style></head><body>' +
+      '<div style="display:flex;gap:16px;align-items:center;border-bottom:3px solid #b9861f;padding-bottom:12px;margin-bottom:14px"><img src="logo.png" style="height:64px" onerror="this.remove()"><div><h1>MeridianCrest International</h1><p>B2B Export Catalogue — Dehydrated Vegetables • Natural Powders • Spices • India</p></div></div>' +
+      '<table><tr><th>Product</th><th>Forms</th><th>Key specs</th><th>Applications</th><th>Packaging</th><th>MOQ</th></tr>' + rows + '</table>' +
+      '<p>Price available on request. Documentation per order requirements. © 2026 MeridianCrest International.</p><scr'+'ipt>window.onload=function(){window.print()}</scr'+'ipt></body></html>';
+    const w = window.open("", "_blank");
+    if (!w) { alert("Catalogue is currently being updated. Contact us for the latest product specifications."); return; }
+    w.document.write(html); w.document.close();
+    window.MCI.track("catalogue_download", {});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buyer Dashboard | MeridianCrest International</title>
+<meta name="description" content="Buyer dashboard: company profile, saved products, inquiries, quotations, saved specifications, reorders and documents." />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap topbar-in"><span>B2B Export • Bulk Supply • Custom Specifications</span><span data-contact="email"></span></div></div>
+<header class="site-header"><div class="wrap header-in">
+<a class="brand" href="index.html" aria-label="MeridianCrest International — home"><img src="logo.png" alt="MeridianCrest International logo" /></a>
+<nav class="mainnav" id="mainnav" aria-label="Main navigation">
+<a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="sourcing.html">Sourcing &amp; Quality</a><a href="process.html">Export Process</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+</nav>
+<div class="header-actions"><a class="btn btn-ghost btn-sm" href="catalogue.html">View Catalogue</a><a class="btn btn-primary btn-sm" href="quote.html" data-track="quote_started">Get a Quote</a><button class="hamburger" id="hamburger" aria-label="Open menu">☰</button></div>
+</div></header>
+
+<main id="main">
+<section class="section"><div class="wrap">
+<span class="kicker">Buyer dashboard</span>
+<h1>Welcome back, buyer</h1>
+<p class="lead">Your saved products, specifications, inquiries and reorders — without starting from zero. <span class="small">(Demo build: data is stored in this browser. Accounts, orders and live shipment status activate with the backend.)</span></p>
+<div class="dash-grid" style="margin-top:24px">
+<nav class="dash-nav" aria-label="Dashboard">
+<button data-tab="overview" class="active">Overview</button>
+<button data-tab="saved">Saved products</button>
+<button data-tab="specs">My specifications</button>
+<button data-tab="inquiries">Inquiries &amp; quotes</button>
+<button data-tab="docs">Documents</button>
+<button data-tab="prefs">Updates &amp; profile</button>
+</nav>
+<div class="dash-panel" id="panel"></div>
+</div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="wrap f-grid">
+<div><img class="foot-logo" src="logo.png" alt="MeridianCrest International logo" /><p class="small">MeridianCrest International<br />India-Origin Ingredients. Global Supply.</p></div>
+<div><h5>Company</h5><a href="products.html">Products</a><a href="about.html">About</a><a href="sourcing.html">Sourcing</a><a href="process.html">Export Process</a><a href="contact.html">Contact</a></div>
+<div><h5>Products</h5><a href="products.html?cat=dehydrated-vegetables">Dehydrated Vegetables</a><a href="products.html?cat=natural-powders">Natural Powders</a><a href="products.html?cat=spices">Spices</a></div>
+<div><h5>Buyer Resources</h5><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="quote.html">Get a Quote</a></div>
+</div>
+<div class="wrap f-bottom"><span>© <span data-year>2026</span> MeridianCrest International. All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Policy</a> · <a href="terms.html" style="display:inline">Terms</a> · <a href="cookies.html" style="display:inline">Cookie Policy</a></span></div></footer>
+<div class="contact-fab" aria-label="Direct contact"><a class="wa" id="fabWa" href="contact.html" title="WhatsApp" aria-label="WhatsApp">✆</a><a id="fabMail" href="contact.html" title="Email" aria-label="Email">✉</a><a class="quote" href="quote.html" title="Request Quote" aria-label="Request Quote" data-track="quote_started">➔</a></div>
+<nav class="mobile-bar" aria-label="Quick actions"><a class="btn btn-light" href="contact.html">WhatsApp</a><a class="btn btn-primary" href="quote.html" data-track="quote_started">Get Quote</a></nav>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function(){
+  const panel = document.getElementById("panel");
+  const leads = () => JSON.parse(localStorage.getItem("mci_leads") || "[]");
+  const savedP = () => JSON.parse(localStorage.getItem("mci_saved_products") || "[]");
+  const savedS = () => JSON.parse(localStorage.getItem("mci_saved_specs") || "[]");
+  const esc = window.MCI.escapeHTML;
+  const pname = slug => { const p = PRODUCTS.find(x => x.slug === slug); return p ? p.name : (slug || "General inquiry"); };
+
+  const views = {
+    overview(){
+      const l = leads();
+      const reminder = l.length ? '<div class="notice" style="margin-top:12px"><b>Reorder reminder (based on your saved inquiries):</b> ' + esc(pname(l[l.length-1].product)) + ' — <a href="quote.html?product=' + esc(l[l.length-1].product || "") + '">Request repeat quote →</a></div>' : "";
+      panel.innerHTML = '<h2>Overview</h2><p class="small">Company profile • ' + l.length + ' previous inquiries • ' + savedP().length + ' saved products • ' + savedS().length + ' saved specifications</p>' +
+        '<div class="card" style="margin-top:12px"><h3>Your MeridianCrest Contact</h3><p class="small">An account manager is shown here once CRM data is available. Meanwhile: <span data-contact="email"></span></p></div>' + reminder +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="btn btn-primary" href="quote.html">New inquiry</a><a class="btn btn-light" href="products.html">Browse products</a></div>';
+    },
+    saved(){
+      const s = savedP();
+      panel.innerHTML = '<h2>Saved products</h2>' + (s.length ? s.map(slug => {
+        const p = PRODUCTS.find(x => x.slug === slug); if (!p) return "";
+        return '<div class="card" style="margin-top:10px"><h3>' + p.name + '</h3><p class="small">' + categoryName(p.category) + ' • ' + p.forms.join(", ") + '</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-primary btn-sm" href="quote.html?product=' + p.slug + '">Request repeat quote</a><a class="btn btn-light btn-sm" href="product.html?slug=' + p.slug + '">View</a></div></div>';
+      }).join("") : '<div class="empty-state"><h3>No saved products yet</h3><p>Tap “Save product” on any product page.</p><a class="btn btn-forest" href="products.html">Browse products</a></div>');
+    },
+    specs(){
+      const s = savedS();
+      panel.innerHTML = '<h2>My specifications</h2>' + (s.length ? s.map((sp, i) =>
+        '<div class="card" style="margin-top:10px"><h3>' + esc(pname(sp.product)) + '</h3><p class="small">Form: ' + esc(sp.form || "—") + ' • Qty: ' + esc(sp.qty || "—") + ' • Destination: ' + esc(sp.port || "—") + ' • Pack: ' + esc(sp.pack || "—") + '</p><a class="btn btn-primary btn-sm" href="quote.html?product=' + esc(sp.product || "") + '">Request updated quote</a></div>').join("")
+        : '<div class="empty-state"><h3>No saved specifications</h3><p>Submit a quote with “save specification” or save from a product page.</p></div>');
+    },
+    inquiries(){
+      const l = leads().slice().reverse();
+      panel.innerHTML = '<h2>Inquiries &amp; quotations</h2>' + (l.length ? l.map(x =>
+        '<div class="card" style="margin-top:10px"><h3>' + esc(pname(x.product)) + ' <span class="tag">' + esc(x.status || "New") + '</span></h3><p class="small">Ref ' + esc(x.leadId || "") + ' • ' + esc((x.date || "").slice(0,10)) + ' • Qty: ' + esc((x.quantity || "") + " " + (x.unit || "")) + ' • ' + esc(x.country || "") + '</p><a class="btn btn-light btn-sm" href="quote.html?product=' + esc(x.product || "") + '" data-track="reorder_started">Reorder previous product →</a></div>').join("")
+        : '<div class="empty-state"><h3>No inquiries yet</h3><p>Your structured inquiries will appear here with reorder shortcuts.</p><a class="btn btn-primary" href="quote.html">Request a quote</a></div>');
+    },
+    docs(){
+      const l = leads();
+      panel.innerHTML = '<h2>Documents</h2><p class="small">Previous documentation (COA, invoices, packing lists) becomes available here once issued against your orders. Current inquiries: ' + l.length + '.</p><div class="empty-state" style="margin-top:12px"><h3>No documents yet</h3><p>Documents attach to confirmed orders in the full portal.</p></div>';
+    },
+    prefs(){
+      const subs = JSON.parse(localStorage.getItem("mci_subscriptions") || "[]");
+      panel.innerHTML = '<h2>Company profile</h2><div class="field"><label for="d-co">Company name</label><input id="d-co" placeholder="Company LLC" /></div>' +
+        '<button class="btn btn-forest btn-sm" id="d-save">Save profile (this browser)</button>' +
+        '<h3 style="margin-top:18px">Product updates</h3><p class="small">Subscribe to new products, specification updates, packaging options and export insights.</p>' +
+        '<div class="chip-row" id="d-subs">' + ["New products","Specification updates","Market updates","Export insights"].map(t => '<button class="chip' + (subs.includes(t) ? " active" : "") + '" data-t="' + t + '">' + t + '</button>').join("") + '</div>';
+      document.getElementById("d-save").addEventListener("click", () => {
+        localStorage.setItem("mci_company", document.getElementById("d-co").value.trim());
+        alert("Profile saved in this browser.");
+      });
+      document.querySelectorAll("#d-subs .chip").forEach(b => b.addEventListener("click", () => {
+        const cur = JSON.parse(localStorage.getItem("mci_subscriptions") || "[]");
+        const i = cur.indexOf(b.dataset.t);
+        if (i >= 0) cur.splice(i, 1); else cur.push(b.dataset.t);
+        localStorage.setItem("mci_subscriptions", JSON.stringify(cur));
+        b.classList.toggle("active");
+      }));
+    }
+  };
+  document.querySelectorAll(".dash-nav button").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".dash-nav button").forEach(x => x.classList.remove("active"));
+    b.classList.add("active"); views[b.dataset.tab]();
+  }));
+  document.querySelectorAll('[data-track="reorder_started"]').forEach(() => {});
+  views.overview();
+})();
+</script>
+</body>
+</html>

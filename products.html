@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Products | Bulk Dehydrated Vegetables, Natural Powders & Spices — MeridianCrest</title>
+<meta name="description" content="Browse 19 bulk B2B ingredients: dehydrated onion and garlic, amla and moringa powders, cumin and cardamom. Search, filter, view specifications, request a quote." />
+<link rel="canonical" href="products.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Product Portfolio — MeridianCrest International" />
+<meta property="og:description" content="Bulk agricultural ingredients for international B2B buyers. Specifications available on request." />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap topbar-in"><span>B2B Export • Bulk Supply • Custom Specifications</span><span data-contact="email"></span></div></div>
+<header class="site-header"><div class="wrap header-in">
+<a class="brand" href="index.html" aria-label="MeridianCrest International — home"><img src="logo.png" alt="MeridianCrest International logo" /></a>
+<nav class="mainnav" id="mainnav" aria-label="Main navigation">
+<a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="sourcing.html">Sourcing &amp; Quality</a><a href="process.html">Export Process</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+</nav>
+<div class="header-actions"><a class="btn btn-ghost btn-sm" href="catalogue.html" data-track="catalogue_download">View Catalogue</a><a class="btn btn-primary btn-sm" href="quote.html" data-track="quote_started">Get a Quote</a><button class="hamburger" id="hamburger" aria-label="Open menu">☰</button></div>
+</div></header>
+
+<main id="main">
+<section class="section" style="padding-bottom:0"><div class="wrap">
+<span class="kicker">Product portfolio</span>
+<h1>Our Product Portfolio</h1>
+<p class="lead">Bulk agricultural ingredients and processed food products for international B2B buyers. Every inquiry path is one click away.</p>
+<div class="filters-bar">
+<div class="search-row">
+<input id="q" type="search" placeholder='Search products — try "cumin", "onion powder", "garlic"…' aria-label="Search products" autocomplete="off" />
+<a class="btn btn-forest" href="quote.html" data-track="quote_started">Get a Quote</a>
+</div>
+<div><p class="small" style="margin-bottom:6px"><b>Category</b></p><div class="chip-row" id="catChips"></div></div>
+<div><p class="small" style="margin-bottom:6px"><b>Form</b></p><div class="chip-row" id="formChips"></div></div>
+<div><p class="small" style="margin-bottom:6px"><b>Application</b></p><div class="chip-row" id="appChips"></div></div>
+<p class="small" id="resultCount" role="status"></p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:26px"><div class="wrap">
+<div class="p-grid" id="grid"></div>
+<div class="empty-state" id="empty" hidden><h3>No products match</h3><p>Try a different search term or clear the filters — or send your requirement directly.</p><a class="btn btn-primary" href="quote.html">Send Your Requirement</a></div>
+<div class="notice" style="margin-top:26px"><b>Specification policy:</b> technical values are published only when verified. Otherwise the page states <i>Available on request</i> — share your target spec and we evaluate feasibility.</div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="wrap f-grid">
+<div><img class="foot-logo" src="logo.png" alt="MeridianCrest International logo" /><p class="small">MeridianCrest International<br />India-Origin Ingredients. Global Supply.</p><p class="small">Email: <span data-contact="email"></span><br />Phone: <span data-contact="phone"></span></p></div>
+<div><h5>Company</h5><a href="products.html">Products</a><a href="about.html">About</a><a href="sourcing.html">Sourcing</a><a href="process.html">Export Process</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
+<div><h5>Products</h5><a href="products.html?cat=dehydrated-vegetables">Dehydrated Vegetables</a><a href="products.html?cat=natural-powders">Natural Powders</a><a href="products.html?cat=spices">Spices</a><a href="catalogue.html">Catalogue</a></div>
+<div><h5>Buyer Resources</h5><a href="catalogue.html">Catalogue</a><a href="resources.html">Buyer Guides</a><a href="faq.html">FAQ</a><a href="dashboard.html">Buyer Dashboard</a></div>
+</div>
+<div class="wrap f-bottom"><span>© <span data-year>2026</span> MeridianCrest International. All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Policy</a> · <a href="terms.html" style="display:inline">Terms</a> · <a href="cookies.html" style="display:inline">Cookie Policy</a></span></div></footer>
+
+<div class="contact-fab" aria-label="Direct contact">
+<a class="wa" id="fabWa" href="contact.html" title="WhatsApp" aria-label="WhatsApp">✆</a>
+<a id="fabMail" href="contact.html" title="Email" aria-label="Email">✉</a>
+<a class="quote" href="quote.html" title="Request Quote" aria-label="Request Quote" data-track="quote_started">➔</a>
+</div>
+<nav class="mobile-bar" aria-label="Quick actions"><a class="btn btn-light" href="contact.html">WhatsApp</a><a class="btn btn-primary" href="quote.html" data-track="quote_started">Get Quote</a></nav>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const state = { q:"", cat:params.get("cat")||"all", form:"all", app:"all" };
+  const FORMS = ["Powder","Granules","Flakes","Seeds","Chopped"];
+  const APPS = ["Food Manufacturing","Seasonings","Foodservice","Ingredient Blending","Private Label","Other"];
+  const grid = document.getElementById("grid"), empty = document.getElementById("empty"),
+        count = document.getElementById("resultCount"), input = document.getElementById("q");
+
+  function chips(el, items, key){
+    el.innerHTML = items.map(v => '<button class="chip'+(state[key]===(v.id||v)?" active":"")+'" data-v="'+(v.id||v)+'">'+(v.name||v)+'</button>').join("");
+    el.querySelectorAll("button").forEach(b => b.addEventListener("click", () => { state[key]=b.dataset.v; chips(el,items,key); render(); }));
+  }
+  chips(document.getElementById("catChips"), [{id:"all",name:"All"}].concat(CATEGORIES), "cat");
+  chips(document.getElementById("formChips"), [{id:"all",name:"All"}].concat(FORMS), "form");
+  chips(document.getElementById("appChips"), [{id:"all",name:"All"}].concat(APPS), "app");
+
+  let searchT;
+  input.addEventListener("input", () => { clearTimeout(searchT); searchT = setTimeout(() => {
+    state.q = input.value.trim().toLowerCase(); render();
+    if (state.q) window.MCI.track("product_search", { term: state.q });
+  }, 220); });
+
+  function card(p){
+    const forms = p.forms.join(" / ");
+    return '<article class="p-card"><div class="p-gallery">' +
+      p.images.map(im => '<figure><img src="'+im.src+'" alt="'+window.MCI.escapeHTML(im.alt)+'" loading="lazy"><figcaption>'+im.tag+'</figcaption></figure>').join("") +
+      '</div><div class="p-body"><span class="p-cat">'+categoryName(p.category)+'</span><h3>'+p.name+'</h3>' +
+      '<p class="p-meta"><b>Form:</b> '+forms+'<br><b>Origin:</b> '+p.origin+'<br><b>MOQ:</b> '+p.moq+' &nbsp;•&nbsp; <b>Specs:</b> <span class="aor">available on request</span></p>' +
+      '<p class="p-meta">'+p.applications.slice(0,3).join(" • ")+'</p>' +
+      '<div class="p-actions"><a class="btn btn-forest" href="quote.html?product='+p.slug+'" data-track="quote_started">Request Quote</a><a class="btn btn-light" href="product.html?slug='+p.slug+'">View Product</a></div>' +
+      '</div></article>';
+  }
+  function render(){
+    const list = PRODUCTS.filter(p => p.status==="active")
+      .filter(p => state.cat==="all" || p.category===state.cat)
+      .filter(p => state.form==="all" || p.forms.includes(state.form))
+      .filter(p => state.app==="all" || p.applications.includes(state.app))
+      .filter(p => !state.q || (p.name+" "+p.forms.join(" ")+" "+categoryName(p.category)).toLowerCase().includes(state.q));
+    grid.innerHTML = list.map(card).join("");
+    empty.hidden = list.length > 0;
+    count.textContent = list.length + " of " + PRODUCTS.length + " products";
+  }
+  render();
+  window.MCI.track("page_view", { page: "products" });
+})();
+</script>
+</body>
+</html>
